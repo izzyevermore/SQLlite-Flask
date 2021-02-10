@@ -9,13 +9,16 @@ def init_sqlite_db():
     print("Table created successfully")
     conn.close()
 
+
 init_sqlite_db()
 
 app = Flask(__name__)
 
+
 @app.route('/enter-new/')
 def enter_new_student():
     return render_template('students.html')
+
 
 @app.route('/add-new-record/', methods=['POST'])
 def add_new_record():
@@ -36,4 +39,8 @@ def add_new_record():
         finally:
             con.close()
             return render_template('results.html', msg=msg)
+
+
+if __name__ == '__main__':
+    app.run()
 
